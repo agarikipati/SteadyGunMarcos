@@ -2,9 +2,13 @@
 #include <iostream>
 #include <string>
 
+#ifndef NULL
+#define NULL 0
+#endif
+
 template <class T>
 class dynamicArray{
-	static const int MAX_SIZE = 300000 / sizeof(T);
+	static const int MAX_SIZE = 3000000 / sizeof(T);
 public:
 	dynamicArray();
 	dynamicArray(const dynamicArray<T> &toCopy);

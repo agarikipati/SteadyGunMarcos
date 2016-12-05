@@ -11,10 +11,15 @@ plane::plane(){
     bool arrival = 0;
 }
 
-bool plane::operator< (const plane &p1, const plane &p2){
+bool operator< (const plane &p1, const plane &p2){
     return p1.priority < p2.priority;
 }
 
-bool plane::operator <=(const plane &p1, const plane &p2){
+bool operator <=(const plane &p1, const plane &p2){
     return p1.priority <= p2.priority;
+}
+
+std::ostream& operator<< (std::ostream &out, const plane &p){
+    out << p.priority;
+    return out;
 }
