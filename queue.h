@@ -33,6 +33,6 @@ private:
     int size;
 };
 
-#include "queue.tpp"
+#include "queue.cpp"
 
 #endif
