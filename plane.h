@@ -11,7 +11,6 @@ public:
     plane();
     plane(float a, int b, int c, int d, int e, float f, bool g, bool h)
     : cargo(a), requested_time(b), departure_time(c), fuel(d), people(e), priority(f), grandchild(g), arrival(h) {};
-
     float cargo;
     int requested_time;
     int departure_time;

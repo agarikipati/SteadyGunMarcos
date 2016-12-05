@@ -1,5 +1,3 @@
-#include "queue.h"
-
 template <class T>
 queue<T>::queue(){
     front = last = NULL;
