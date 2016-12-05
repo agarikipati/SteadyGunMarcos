@@ -1,6 +1,12 @@
 #ifndef INTERACT_H
 #define INTERACT_H
 
+#include "plane.h"
+#include "priority.h"
+#include "airport.h"
+#include <iostream>
+#include <fstream>
+
 class interact{
 public:
     interact();

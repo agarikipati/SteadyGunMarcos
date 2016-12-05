@@ -1,6 +1,10 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 
+#include "priority.h"
+#include "queue.h"
+#include "plane.h"
+
 struct stats{
     float avg_takeoff_wait;
     float avg_land_wait;
