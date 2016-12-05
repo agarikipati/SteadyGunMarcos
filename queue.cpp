@@ -7,6 +7,16 @@ queue<T>::queue(){
 }
 
 template <class T>
+queue<T>::~queue(){
+    node<T>* crawler = front;
+    while (crawler != NULL){
+	node<T>* tmp = crawler;
+	crawler = crawler->next;
+	delete tmp;
+    }
+}
+
+template <class T>
 T& queue<T>::Peek(){
     if (front == NULL){
 	throw "queue empty";

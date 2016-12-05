@@ -22,6 +22,7 @@ template <class T>
 class queue{
 public:
     queue();
+    ~queue();
     T& Peek();
     void Enqueue(T &toAdd);
     T Dequeue();
