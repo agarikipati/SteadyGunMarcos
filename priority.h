@@ -1,6 +1,8 @@
 #ifndef PRIORITY_H
 #define PRIORITY_H
 
+#include "dynamicarray.h"
+
 template <class T>
 class priority_queue{
 public:
@@ -10,13 +12,14 @@ public:
     T& Peek();
     bool IsEmpty();
     int Size();
+    bool IsHeap(int index);
+    void Print();
 private:
     int Parent(int index);
     int Left(int index);
     int Right(int index);
     void Heapify(int index);
     void BuildHeap();
-    bool IsHeap(int index);
     int size;
     dynamicArray<T> objects;
 };
@@ -42,19 +45,20 @@ void priority_queue<T>::Insert(T toAdd){
 }
 
 template <class T>
-T GetNext(){
+T priority_queue<T>::GetNext(){
     if (size == 0){
 	throw "queue empty";
     }
     T min = objects[0];
     objects[0] = objects[size - 1];
+    objects.removeLast();
     size--;
     Heapify(0);
     return min;
 }
 
 template <class T>
-T& Peek(){
+T& priority_queue<T>::Peek(){
     if(size == 0){
 	throw "queue empty";
     }
@@ -69,11 +73,6 @@ bool priority_queue<T>::IsEmpty(){
 template <class T>
 int priority_queue<T>::Size(){
     return size;
-}
-
-template <class T>
-void priority_queue<T>::Insert(T toAdd){
-    
 }
 
 template <class T>
@@ -96,10 +95,10 @@ void priority_queue<T>::Heapify(int index){
     int min = index;
     int left = Left(index);
     int right = Right(index);
-    if (left < size && objects[left] < objects[min]){
+    if (left < size && objects[left] <= objects[min]){
 	min = left;
     }
-    if (right < size && objects[right] < objects[min]){
+    if (right < size && objects[right] <= objects[min]){
 	min = right;
     }
     if (min != index){
@@ -119,6 +118,9 @@ void priority_queue<T>::BuildHeap(){
 
 template <class T>
 bool priority_queue<T>::IsHeap(int index){
+    if (index < 0 || index > size - 1){
+	throw "index out of range";
+    }
     bool left_valid = true;
     bool right_valid = true;
     int left = Left(index);
@@ -138,4 +140,9 @@ bool priority_queue<T>::IsHeap(int index){
     return (left_valid && right_valid);
 }
 
-#endif PRIORITY_H
+template <class T>
+void priority_queue<T>::Print(){
+    objects.print();
+}
+
+#endif

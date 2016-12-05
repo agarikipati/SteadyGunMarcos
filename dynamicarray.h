@@ -11,8 +11,8 @@ public:
 	~dynamicArray();
 	T& operator[] (const int index);
 	void addElement(T toAdd);
-	void insertElement(T toInsert, int index);
 	bool deleteElement(T toDelete);
+	void removeLast();
 	int size() const;
 	int count() const;
 	float util() const;
@@ -50,6 +50,7 @@ dynamicArray<T>::~dynamicArray(){
 	}
 }
 
+template <class T>
 T& dynamicArray<T>::operator[] (const int index){
     return elements[index];
 }
@@ -83,26 +84,6 @@ void dynamicArray<T>::addElement(T toAdd){
 }
 
 template <class T>
-void dynamicArray<T>::insertElement(T toInsert, int index){
-	if(index < 0 || index + 1 > MAX_SIZE){
-		throw "Index out of valid range";	
-	}
-	if(index < elementsSize){
-		if(index > lastIndex){
-			fillElements(lastIndex + 1, index, defaultVal);
-		}
-		elements[index] = toInsert;	
-		if(index > lastIndex){
-			lastIndex = index;	
-		}
-		return;
-	}
-	increaseSize((index - elementsSize + 1 > 2*elementsSize) ? (index - elementsSize + 1) : (2*elementsSize));	
-	elements[index] = toInsert;
-	lastIndex = index;
-}
-
-template <class T>
 bool dynamicArray<T>::deleteElement(T toDelete){
 	try{
 		bool elementInArr = false;
@@ -120,6 +101,14 @@ bool dynamicArray<T>::deleteElement(T toDelete){
 	}catch(const char* msg){
 		throw msg;	
 	}
+}
+
+template <class T>
+void dynamicArray<T>::removeLast(){
+    if(lastIndex < 0){
+	throw "array empty";
+    }
+    lastIndex--;
 }
 
 template <class T>

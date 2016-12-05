@@ -4,10 +4,11 @@
 class plane{
 public:
     plane();
-    // plane(int a, int b, int c, int d, float e, bool f, bool g) : cargo(a), requested_time(b), fuel(c), people(d), priority(e), grandchild(f), arrival(g) {};
-    bool operator<(const plane &p1, const plane &p2); //compares priorities
-    bool operator>(const plane &p1, const plane &p2); //compares priorities
-    int cargo;
+    plane(float a, int b, int c, int d, int e, float f, bool g, bool h)
+    : cargo(a), requested_time(b), departure_time(c), fuel(d), people(e), priority(f), grandchild(g), arrival(h) {};
+    friend bool operator<(const plane &p1, const plane &p2); //compares priorities
+    friend bool operator <=(const plane &p1, const plane &p2);
+    float cargo;
     int requested_time;
     int departure_time;
     int fuel;
