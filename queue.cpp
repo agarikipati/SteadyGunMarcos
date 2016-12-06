@@ -27,7 +27,7 @@ void queue<T>::Enqueue(T &toAdd){
     node<T>* new_guy = new node<T>(toAdd);
     size++;
     if (last == NULL){
-	first = last = new_guy;
+	front = last = new_guy;
 	return;
     }
     last->next = new_guy;

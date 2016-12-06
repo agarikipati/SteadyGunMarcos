@@ -6,6 +6,8 @@
 #include "airport.h"
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <sstream>
 
 class interact{
 public:
@@ -18,6 +20,9 @@ private:
     void PrintStatistics(int time); 
     void PrintStatistics();
     void LoadPlanes();
+    bool CheckInput(std::string &toCheck);
+    void MakeLowercase(std::string &toConvert);
+    bool ParseData(std::string &rawData);
 };
 
 #endif
